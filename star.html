@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Rating</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .star {
+            font-size: 40px;
+            color: grey;
+            cursor: pointer;
+        }
+        .selected {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Rate the Movie</h2>
+    <div>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+    </div>
+    <div id="output">Rating: 0/5</div>
+
+    <script>
+      let rating = 0;
+
+$(".star").hover(
+    function() {
+        $(".star").slice(0, $(this).index() + 1).addClass("selected");
+    },
+    function() {
+        $(".star").slice(0, rating).addClass("selected").end().slice(rating).removeClass("selected");
+    }
+).click(function() {
+    rating = $(this).index() + 1;
+    $("#output").text("Rating: " + rating + "/5");
+});
+    </script>
+</body>
+</html>
+
+
+alt+9733
