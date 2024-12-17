@@ -1,47 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Shape and Color</title>
+        <title>Change Shape and Color</title>
     <style>
-        #block {
-            width: 100px;
-            height: 100px;
-            background-color: blue;
-            border-radius: 0;
-            margin: 20px auto;
+        body{
+            text-align: center;
         }
-        button {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            font-size: 16px;
+        #block{
+            height:100px;
+            width:100px;
+            background-color: black;
+            margin:auto;
+        }
+        .circle{
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
-    <div id="block"></div>
-    <button id="changeButton">Change</button>
-
+    <div id="block" class="square"></div>
+    <button onClick="csc()">change</button>
     <script>
-        const block = document.getElementById('block');
-        const button = document.getElementById('changeButton');
-
-        button.addEventListener('click', () => {
-            // Toggle color and shape
-            if (block.style.backgroundColor === 'blue') {
-                block.style.backgroundColor = 'red';
-            } else {
-                block.style.backgroundColor = 'blue';
+        function csc(){
+            const b=document.getElementById("block");
+            const nc=`#${Math.floor(Math.random()*16777215).toString(16)}`;
+            b.style.backgroundColor=nc;
+            if(b.className==='circle'){
+                b.className='square'
             }
-
-            if (block.style.borderRadius === '50%') {
-                block.style.borderRadius = '0';
-            } else {
-                block.style.borderRadius = '50%';
+            else{
+                b.className='circle'
             }
-        });
+            
+        }
     </script>
+    
 </body>
 </html>
