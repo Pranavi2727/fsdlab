@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><h1><center>REGISTRATION FORM</h1>
+<body>
+<center>
+<form onsubmit="return validationform()">
+            <fieldset>                                
+        <label for="user"><b>User Name:</b></label>
+        <input type="text" placeholder="Enter name" name="user" id="user" required/>
+        <br><br>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+        <br><br>
+  	<label for="birthday"><b>Date of Birth:</label>
+  	<input type="date" id="birthday" name="birthday">
+	<br><br>
+	<label for="email"><b>Email</b></label>
+	<input type="text" placeholder="Enter Email" name="email" placeholder="Enter mail" id="email" equired>
+	<br><br>
+	<label for="gender"><b>Gender:</b></label>
+	<input type="radio" name="gender" value="male" required/> Male
+	<input type="radio" name="gender" value="female" required/> Female
+	<br><br>
+	<label for="mobile">Contact:</label>
+        <input type="text" id="mobile" name="mobile" maxlength="10" required />
+	<br><br>
+		<input type="submit" value="Submit"/> 
+	</fieldset>
+	</form>
+<script>
+	function validationform(){
+              const user=document.getElementById("user").value;
+	      const psw=document.getElementById("psw").value;
+              const email=document.getElementById("email").value;
+	      const userRegex=/^[a-zA-Z0-9]{8,16}$/;
+              const pswRegex=/^(?=.*[a-zA-Z0-9])(?=.*([0-9]))(?=.*[=@$])[a-zA-Z0-9#@$]{8,16}$/;
+              const emailRegex=/^[^\@]+@[^\s@]+\.[^\s@]+$/;
+	      if(!userRegex.test(user)){
+                    alert("Enter valid Username");
+                    return false;
+                }
+                if(!pswRegex.test(psw)){
+                    alert("Enter valid Password");
+                    return false;
+                }
+                if(!emailRegex.test(email)){
+                    alert("Enter valid Email");
+                    return false;
+                }
+        
+                alert("Registration is Successful");
+                return true;
+            }
+</script>
+</body>
+</html>
