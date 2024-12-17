@@ -29,11 +29,18 @@
         const button = document.getElementById('changeButton');
 
         button.addEventListener('click', () => {
-            // Change color and shape
-            block.style.backgroundColor = block.style.backgroundColor === 'blue' ? 'red' : 'blue';
-            block.style.borderRadius = block.style.borderRadius === '0px' ? '50%' : '0px';
-            block.style.width = block.style.width === '100px' ? '150px' : '100px';
-            block.style.height = block.style.height === '100px' ? '150px' : '100px';
+            // Toggle color and shape
+            if (block.style.backgroundColor === 'blue') {
+                block.style.backgroundColor = 'red';
+            } else {
+                block.style.backgroundColor = 'blue';
+            }
+
+            if (block.style.borderRadius === '50%') {
+                block.style.borderRadius = '0';
+            } else {
+                block.style.borderRadius = '50%';
+            }
         });
     </script>
 </body>
