@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Shape and Color</title>
+    <style>
+        #block {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            border-radius: 0;
+            margin: 20px auto;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="block"></div>
+    <button id="changeButton">Change</button>
+
+    <script>
+        const block = document.getElementById('block');
+        const button = document.getElementById('changeButton');
+
+        button.addEventListener('click', () => {
+            // Change color and shape
+            block.style.backgroundColor = block.style.backgroundColor === 'blue' ? 'red' : 'blue';
+            block.style.borderRadius = block.style.borderRadius === '0px' ? '50%' : '0px';
+            block.style.width = block.style.width === '100px' ? '150px' : '100px';
+            block.style.height = block.style.height === '100px' ? '150px' : '100px';
+        });
+    </script>
+</body>
+</html>
