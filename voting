@@ -1,0 +1,112 @@
+App js:
+import React, { Component } from 'react';
+import './App.css';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      languages: [
+        { name: "JavaScript", votes: 0 },
+        { name: "Python", votes: 0 },
+        { name: "Kotlin", votes: 0 },
+        { name: "Java", votes: 0 }
+      ],
+      maxVotedLanguage: null // State to store the result
+    };
+  }
+
+  vote(i) {
+    let newLanguages = [...this.state.languages];
+    newLanguages[i].votes++;
+    this.setState({ languages: newLanguages });
+  }
+
+  handleSubmit = () => {
+    const maxVotedLanguage = this.state.languages.reduce((max, lang) => 
+      lang.votes > max.votes ? lang : max, 
+      { votes: -1 }
+    );
+    this.setState({ maxVotedLanguage });
+  };
+
+  render() {
+    return (
+      <>
+        <h1>Vote Your Language!</h1>
+        <div className="languages">
+          {this.state.languages.map((lang, i) => (
+            <div key={i} className="language">
+              <div className="voteCount">{lang.votes}</div>
+              <div className="languageName">{lang.name}</div>
+              <button onClick={() => this.vote(i)}>Click Here</button>
+            </div>
+          ))}
+        </div>
+        <button onClick={this.handleSubmit}>Submit</button>
+
+        {this.state.maxVotedLanguage && (
+          <div className="result">
+            <h2>Most Voted Language: {this.state.maxVotedLanguage.name}</h2>
+            <p>Votes: {this.state.maxVotedLanguage.votes}</p>
+          </div>
+        )}
+      </>
+    );
+  }
+}
+
+export default App;
+App.css:
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  text-align: center;
+  color: #222;
+  font-size: 24px; 
+  font-family: sans-serif;
+}
+
+h1 {
+  margin: 30px;
+}
+
+.languages {
+  height: 400px;
+  width: 400px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.language {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: blanchedalmond;
+  border: 1px solid #222;
+  margin: 2px;
+}
+
+.voteCount {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.language button {
+  color: blueviolet;
+  background-color: #0000;
+  border: none;
+  font-size: 30px;
+  outline: none;
+  cursor: pointer;
+}
